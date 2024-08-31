@@ -1,0 +1,38 @@
+.bar1 {
+    width: 150;
+    position: relative;
+    left: 1100;
+    top: 100;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.command{
+    position: relative;
+    top: 250;
+    left: 600;
+}
+.disp{
+    background-color: black;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space:nowrap;
+    font-size: xx-large;
+    width: 30ch;
+    height: 200;
+    align-content: center;
+    flex-direction: row;
+    position: absolute;
+    top:150;
+    left: 500;
+}
+.gameover{
+    font-size: xx-large;
+    width: 200;
+    height: 100;
+    position: relative;
+    bottom: 150;
+    left: 580;
+}
