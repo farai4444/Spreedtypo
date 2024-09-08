@@ -1,13 +1,13 @@
 // this section keeps hold of every paragraph to be typed
 var questions = {
-    paragraph1 : `To be more accurate, however, Crusoe’s reactionto the choice presented to
+    paragraph1 : `To be more accurate, however, Crusoe's reactionto the choice presented to
 him gives us no more than the social rate of discount for the one year and, for
 that matter, is strictly valid only for 100 bushels of corn this year, not for more or
 for less. If, indeed, the same rate of discount did hold for successive years, then
 Crusoe would be indifferent as between 100 today, 120 next year, 144 in the year
 following that, and so on. It is, however, quite possible that his discount rate rises
 with the passage of time. Instead of being indifferent as between 100 today and
-144 intwo years’ time, he might specify 150 intwo years’ time. This would mean
+144 intwo years' time, he might specify 150 intwo years' time. This would mean
 that for the first year his rate of discount is 20 per cent, but for the second year he
 uses a discount rate of roughly 25 per cent per annum.`,
     paragraph2 : `Persons whose taxable income from
