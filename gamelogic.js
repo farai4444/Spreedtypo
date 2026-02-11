@@ -12,17 +12,17 @@ Description this is an open source code
 
 //tag declaration
 var startbtn = document.getElementById('startmain');
-var dispText =document.createElement('h3');
+var dispText = document.createElement('h3');
 var DispGameOver = document.createElement('h2');
 var erroText = document.createElement('h4');
-var inputText = document.createElement('input');
+var gameBoardText = document.createElement('h1');
 var timerDisp = document.createElement('h2');
 var scoreDisp = document.createElement('h4');
 //adds the dispText and inputText variables into the body of the html file
 document.body.appendChild(dispText);
 document.body.appendChild(scoreDisp);
 document.body.appendChild(erroText);
-document.body.appendChild(inputText);
+document.body.appendChild(gameBoardText);
 document.body.appendChild(timerDisp);
 document.body.appendChild(DispGameOver);
 //tag initialization
@@ -30,9 +30,8 @@ scoreDisp.className = 'bar1';
 timerDisp.className = 'bar1';
 erroText.className = 'bar1';
 dispText.className = 'disp';
-inputText.className = 'command';
+gameBoardText.className = 'command';
 DispGameOver.className = 'gameover';
-inputText.placeholder = 'Click Here to start typing';
 dispText.textContent = 'Type start to begin';
 erroText.textContent = 'Errors: ';
 timerDisp.textContent = 'Time: ';
@@ -40,14 +39,15 @@ timerDisp.textContent = 'Time: ';
 scoreDisp.textContent = 'Words:'
 DispGameOver.style.color = 
 erroText.style.color = 'red';
-timerDisp.style.color = 'green';
-scoreDisp.style.color = 'red';
+timerDisp.style.color = 'black';
+scoreDisp.style.color = 'black';
+dispText.style.color = 'orange'
 erroText.style.fontSize = 'xx-large';
 timerDisp.style.fontSize = 'xx-large';
 scoreDisp.style.fontSize = 'xx-large';
 var count = 0;
 var scorecount = 0;
-var clockTime=60;
+var clockTime=5;
 let interval;
 //let seconds = 10;
 //let typingstart = false;
@@ -56,20 +56,76 @@ let interval;
  
 //console.log(questions[randval]);
  const startgame = 'start';
+ const startagain = 'restart'
  const hard = 'hard';
  const easy = 'easy';
  const medium = 'medium';
+ gameActive = false;
 
 var mainmenu = () => {
     let initstart = startgame;
     let modifiedcontent = typecontent;
 
-  //the game starts to play from here
+    window.addEventListener('keydown', e => {
 
+      targetValue = e.key;
+      curChar = initstart.charAt(0)
+
+      if (!(targetValue === curChar)) {
+        console.log("you typed wrong character")
+      }
+      else{
+        initstart = initstart.substring(1)
+        timerstart(clockTime,initstart)
+        console.log("match")
+      }
+      
+      if(!(initstart.length === 0)){
+        console.log(initstart)
+        dispText.textContent = initstart;
+      }
+
+      else{
+        console.log ("All characters have been removed")
+        gameActive = true
+        dispText.textContent = 'All Character have been removed'
+        dispText.style.color = 'green'
+        
+        //playGame(targetValue,modifiedcontent)  
+        currentchar = modifiedcontent.charAt(0);
+          if(!(targetValue === currentchar)){
+            erroText.textContent ="Error: "+ errorcount()
+      
+          }
+          else{
+          modifiedcontent = modifiedcontent.substring(1);
+          wordcount(typecontent,modifiedcontent);
+      
+          } 
+
+          if(!(modifiedcontent.length === 0)){
+            dispText.textContent = modifiedcontent;
+          }
+
+          else{
+            dispText.textContent='The Game Is Over You did Great Champ! Type Restart To Break Your Record'
+            dispText.style.color = 'green';
+            initstart = startagain;
+            console.log('Game over');
+            timerstop();
+          }
+       
+        }
+        StateFeatures()
+    })
+ }
+    
+  //the game starts to play from here
+/** 
     inputText.addEventListener('input', e => {
         const targetValue = e.target.value;
         console.log(initstart)
-        if (initstart === targetValue) {initstart = initstart.replace(targetValue,"");timerstart(clockTime)}
+        if (initstart === targetValue) {initstart = initstart.substring(1);}
        // else{}
       
         dispText.innerHTML = initstart;
@@ -83,33 +139,26 @@ var mainmenu = () => {
         //adding errors on incorrect text
 
         //tracking whether the correct character is typed or not
-
-        if (modifiedcontent.includes(targetValue)) {
-          let currentchar = modifiedcontent.charAt(0);
-          if(currentchar.includes(targetValue)){
-          modifiedcontent = modifiedcontent.replace(targetValue,"");
-          wordcount(typecontent,modifiedcontent);
-          //scoreDisp.innerHTML =''+ scorecount++
-          //if (scor) {}
-        }
-          else{erroText.textContent ="Error: "+ errorcount();
-          } 
-        }
-
-         else{erroText.textContent ="Error: "+ errorcount();
-         } 
-         dispText.innerHTML = modifiedcontent;
-         e.target.value = "";
+*/
          
+
+function playGame(targetV,modifiedcontent) {
+      }
+         
+  function StateFeatures() {
+    if (gameActive === true) {
+      gameBoardText.textContent ="Lets go !!! 😆😆😆";
+    }
+    else{gameBoardText.textContent = 'Welcome to the Game 😀';}
+    
+  }
           //This section handles what happens when the timer hits zero or when all the characters have been type correctly
 
-        if(modifiedcontent.length == 0){console.log('Game over');timerstop();}
-            else{dispText.style.color = 'orange';} 
-           } 
-           else{dispText.style.color = 'pink';}
-      }
-    )
-  }
+        
+      
+    
+  
+  
    
 
 //startbtn.addEventListener('click',mainmenu)

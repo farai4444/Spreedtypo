@@ -1,7 +1,7 @@
 .bar1 {
-    width: 150;
+    width: 150px;
     position: relative;
-    left: 1100;
+    left: 72%;
     top: 100;
     display:flex;
     flex-direction: row;
@@ -10,9 +10,14 @@
 }
 
 .command{
-    position: relative;
-    top: 250;
-    left: 600;
+    overflow: auto;
+    position: hidden;
+    bottom: 20%;
+    left: 72%;
+    flex-direction: row;
+    width: 40%;
+    height: 80px;
+    text-align: center;
 }
 .disp{
     background-color: black;
@@ -20,8 +25,8 @@
     text-overflow: clip;
     white-space:nowrap;
     font-size: xx-large;
-    width: 30ch;
-    height: 200;
+    width: 40ch;
+    height: 40%;
     align-content: center;
     flex-direction: row;
     position: absolute;
